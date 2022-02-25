@@ -1,6 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <distributionManagement>
+    <site>
+    <id>shrek</id>
+    <url>scp://michelle@shrek.unideb.hu:2222/home/michelle/public_html/${project.artifactId}</url>
+    </site>
+    </distributionManagement>
     <modelVersion>4.0.0</modelVersion>
     <groupId>hu.unideb.inf</groupId>
     <artifactId>ip-geolocator</artifactId>
@@ -42,6 +48,18 @@
     </dependencies>
     <build>
         <plugins>
+        <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.11.0</version>
+                <dependencies>
+        <dependency>
+            <groupId>org.apache.maven.wagon</groupId>
+            <artifactId>wagon-ssh</artifactId>
+            <version>3.5.1</version>
+            </dependency>
+    </dependencies>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
